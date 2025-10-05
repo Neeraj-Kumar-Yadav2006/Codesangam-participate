@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webster</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+    .hero-section{
+    /*background-image:url("pyramid.png");*/
+    object-fit: fill;
+    height: 30px;
+    width:1500px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+body{
+  background-color: blueviolet;
+}
+.hero-message{
+   /* text-align: end;*/
+   background-color: black;
+   color: white;
+   height: 40px;
+   align-items: center;
+   justify-content: center;
+   display: flex;
+   font-size: 0.85rem;
+   width: 80%;
+   margin-bottom: 0px;
+}
+.hero-message:hover{
+    border:3px solid orangered;
+}
+.hero-message a{
+    color: #007199;
+}
+.panel{
+    height:60px;
+    background-color: #222f3d;
+    display:flex;
+    justify-content: space-evenly;
+    color: white;
+    align-items: center;
+
+}
+.panel-option p{
+    display: inline;
+    justify-content: center;
+    margin-left: 15px;
+
+}
+.panel-option{
+    width: 70%;font-size: 0.85rem;
+}
+.panel-deals{
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+}
+
+.bar {
+  width: 30px;
+  background: turquoise;
+  margin: 2px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.explanation {
+  background: #f1f3f5;
+  color: black;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 20px;
+  text-align: center;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+      <div class="panel">
+            <div class="panel-all">
+                <i class="fa-solid fa-bars"></i>
+                <label>Algorithm:</label>
+                 <select id="algorithm">
+                     <option>Bubble Sort</option>
+                      <option>Insertion Sort</option>
+                      <option>Selection Sort</option>
+                      <option>Merge Sort</option>
+                      <option>Heap Sort</option>
+                      <option>Quick  Sort</option>
+                 </select>
+
+            </div>
+            <div class="panel-option">
+                <label>Array Size:</label>
+                 <input type="range" id="size" min="5" max="50" value="20" />
+
+                <label>Sorting Speed:</label>
+                <input type="range" id="speed" min="50" max="1000" value="300" />
+
+                <button id="generate">Generate Array</button>
+                <button id="sort">Start Sorting</button>
+                <button id="reset">Reset</button>
+            </div>
+            <div class="panel-deals">
+                Choose different Algorithm to visualise
+            </div>
+        </div>
+    </header>
+  <div id="bars" class="visualizer"></div>
+        <div id="explanation" class="explanation">
+         Click “Generate Array” to start visualization.
+    </div>
+    <div class="hero-section">
+        <div class="hero-message">
+            <p>We believe that by using this you can really visualise the different sorting algorithm.<a>Click here to give your feedback</a> </p>
+        </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
