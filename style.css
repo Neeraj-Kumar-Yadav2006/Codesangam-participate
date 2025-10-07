@@ -1,0 +1,90 @@
+.hero-section {
+  /* background-image:url("pyramid.png"); */
+  object-fit: fill;
+  height: 30px;
+  width: 1500px;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+body {
+  background-color: blueviolet;
+}
+
+.hero-message {
+  /* text-align: end;*/
+  background-color: black;
+  color: white;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  font-size: 0.85rem;
+  width: 80%;
+  margin-bottom: 0px;
+}
+
+.hero-message:hover {
+  border: 3px solid orangered;
+}
+
+.hero-message a {
+  color: #007199;
+}
+
+.panel {
+  height: 60px;
+  background-color: #222f3d;
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  align-items: center;
+
+}
+
+.panel-option p {
+  display: inline;
+  justify-content: center;
+  margin-left: 15px;
+
+}
+
+.panel-option {
+  width: 70%;
+  font-size: 0.85rem;
+}
+
+.panel-deals {
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.visualizer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+}
+
+.bar {
+  width: 30px;
+  background: turquoise;
+  margin: 2px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.explanation {
+  background: #f1f3f5;
+  color: black;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 20px;
+  text-align: center;
+}
