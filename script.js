@@ -2,7 +2,9 @@ const barsContainer = document.getElementById("bars");
 const explanation = document.getElementById("explanation");
 const sizeSlider = document.getElementById("size");
 const speedSlider = document.getElementById("speed");
+
 let arr = [];
+
 function generateArray() {
   arr = [];
   barsContainer.innerHTML = "";
@@ -15,9 +17,11 @@ function generateArray() {
     barsContainer.appendChild(bar);
   }
 }
+
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
+
 async function bubbleSort() {
   const bars = document.querySelectorAll(".bar");
   let n = arr.length;
@@ -121,4 +125,5 @@ document.getElementById("sort").addEventListener("click", () => {
     selectionSort();
   }
 });
+// Generate initial array
 generateArray();
