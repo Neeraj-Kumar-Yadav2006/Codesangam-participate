@@ -80,19 +80,20 @@ async function insertionSort() {
 async function selectionSort() {
   const bars = document.querySelectorAll(".bar");
   let n = arr.length;
+
   for (let i = 0; i < n - 1; i++) {
     let minIndex = i;
     bars[i].style.background = "red";
-    explanation.innerText = `Selecting minimum from the unsorted part starting at index ${i}`;
+    explanation.innerText = `Selecting minimum from index ${i} to ${n - 1}`;
     await sleep(speedSlider.value);
     for (let j = i + 1; j < n; j++) {
       bars[j].style.background = "orange";
       explanation.innerText = `Comparing ${arr[j]} with current minimum ${arr[minIndex]}`;
       await sleep(speedSlider.value);
       if (arr[j] < arr[minIndex]) {
-        if (minIndex !== i) bars[minIndex].style.background = "turquoise"; 
+        if (minIndex !== i) bars[minIndex].style.background = "turquoise";
         minIndex = j;
-        bars[minIndex].style.background = "red"; 
+        bars[minIndex].style.background = "red";
         explanation.innerText = `New minimum found: ${arr[minIndex]}`;
       } else {
         bars[j].style.background = "turquoise";
@@ -102,11 +103,14 @@ async function selectionSort() {
       [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
       bars[i].style.height = `${arr[i] * 2}px`;
       bars[minIndex].style.height = `${arr[minIndex] * 2}px`;
+
       explanation.innerText += ` → Swapped ${arr[i]} and ${arr[minIndex]}`;
       await sleep(speedSlider.value);
     }
-    bars[i].style.background = "green";
+
+    bars[i].style.background = "green"; 
   }
+
   bars[n - 1].style.background = "green";
   explanation.innerText = "Array sorted successfully!";
 }
