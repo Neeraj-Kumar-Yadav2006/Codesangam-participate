@@ -119,13 +119,13 @@ document.getElementById("generate").addEventListener("click", generateArray);
 document.getElementById("reset").addEventListener("click", generateArray);
 document.getElementById("sort").addEventListener("click", () => {
   const algorithm = document.getElementById("algorithm").value;
-  if (algorithm == "bubble") {
+  if (algorithm == "Bubble Sort") {
     bubbleSort();
   } 
-  else if (algorithm == "insertion") {
+  else if (algorithm == "Insertion Sort") {
     insertionSort();
   }
-  else if (algorithm == "selection") {
+  else if (algorithm == "Selection Sort") {
     selectionSort();
   }
 });
