@@ -30,7 +30,7 @@ async function bubbleSort() {
       bars[j].style.background = "red";
       bars[j + 1].style.background = "red";
       explanation.innerText = `Comparing elements ${arr[j]} and ${arr[j + 1]}`;
-      await sleep(speedSlider.value);
+      await sleep(1000-speedSlider.value);
       if (arr[j] > arr[j + 1]) {
         [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
         bars[j].style.height = `${arr[j] * 2}px`;
@@ -42,6 +42,7 @@ async function bubbleSort() {
     }
     bars[n - 1 - i].style.background = "green";
   }
+  bars[0].style.background = "green";
   explanation.innerText = "Array sorted successfully!";
 }
 async function insertionSort() {
@@ -52,7 +53,7 @@ async function insertionSort() {
     let j = i - 1;
     bars[i].style.background = "red";
     explanation.innerText = `Inserting element ${key} into the sorted part`;
-    await sleep(speedSlider.value);
+    await sleep(1000-speedSlider.value);
     while (j >= 0 && arr[j] > key) {
       bars[j].style.background = "orange";
       explanation.innerText = `Comparing ${arr[j]} and ${key} → shifting ${arr[j]}`;
@@ -60,7 +61,7 @@ async function insertionSort() {
       arr[j + 1] = arr[j];
       bars[j + 1].style.height = `${arr[j + 1] * 2}px`; 
 
-      await sleep(speedSlider.value);
+      await sleep(1000-speedSlider.value);
       bars[j].style.background = "turquoise";
       j--;
     }
@@ -69,7 +70,7 @@ async function insertionSort() {
     bars[i].style.background = "turquoise";
 
     explanation.innerText = `Placed ${key} at correct position`;
-    await sleep(speedSlider.value);
+    await sleep(1000-speedSlider.value);
     for (let k = 0; k <= i; k++) {
       bars[k].style.background = "green";
     }
@@ -85,11 +86,11 @@ async function selectionSort() {
     let minIndex = i;
     bars[i].style.background = "red";
     explanation.innerText = `Selecting minimum from index ${i} to ${n - 1}`;
-    await sleep(speedSlider.value);
+    await sleep(1000-speedSlider.value);
     for (let j = i + 1; j < n; j++) {
       bars[j].style.background = "orange";
       explanation.innerText = `Comparing ${arr[j]} with current minimum ${arr[minIndex]}`;
-      await sleep(speedSlider.value);
+      await sleep(1000-speedSlider.value);
       if (arr[j] < arr[minIndex]) {
         if (minIndex !== i) bars[minIndex].style.background = "turquoise";
         minIndex = j;
@@ -105,7 +106,7 @@ async function selectionSort() {
       bars[minIndex].style.height = `${arr[minIndex] * 2}px`;
 
       explanation.innerText += ` → Swapped ${arr[i]} and ${arr[minIndex]}`;
-      await sleep(speedSlider.value);
+      await sleep(1000-speedSlider.value);
     }
 
     bars[i].style.background = "green"; 
@@ -115,18 +116,87 @@ async function selectionSort() {
   explanation.innerText = "Array sorted successfully!";
 }
 
+// Merge sort 
+
+async function mergeSort(start, end) {
+  const bars = document.querySelectorAll(".bar");
+  if (start >= end) return;
+
+  const mid = Math.floor((start + end) / 2);
+  await mergeSort(start, mid);
+  await mergeSort(mid + 1, end);
+
+  await merge(start, mid, end, bars);
+  explanation.innerText = "Array sorted successfully!";
+}
+
+async function merge(start, mid, end, bars) {
+  // we have taken two array
+  let left = arr.slice(start, mid + 1);
+  let right = arr.slice(mid + 1, end + 1);
+  let i = 0, j = 0, k = start;
+
+  explanation.innerText = `Merging subarrays [${start}…${mid}] and [${mid + 1}…${end}]`;
+  await sleep(1000-speedSlider.value);
+
+  while (i < left.length && j < right.length) {
+    bars[k].style.background = "orange";
+    await sleep(1000-speedSlider.value);
+
+    if (left[i] <= right[j]) {
+      arr[k] = left[i];
+      bars[k].style.height = `${arr[k] * 2}px`;
+      i++;
+    } else {
+      arr[k] = right[j];
+      bars[k].style.height = `${arr[k] * 2}px`;
+      j++;
+    }
+
+    bars[k].style.background = "red";
+    explanation.innerText = `Placing ${arr[k]} in position ${k}`;
+    await sleep(1000-speedSlider.value);
+    bars[k].style.background = "green";
+    k++;
+  }
+
+  while (i < left.length) {
+    arr[k] = left[i];
+    bars[k].style.height = `${arr[k] * 2}px`;
+    bars[k].style.background = "green";
+    i++; k++;
+    await sleep(1000-speedSlider.value);
+  }
+
+  while (j < right.length) {
+    arr[k] = right[j];
+    bars[k].style.height = `${arr[k] * 2}px`;
+    bars[k].style.background = "green";
+    j++; k++;
+    await sleep(1000-speedSlider.value);
+  }
+
+  explanation.innerText = `Merged subarray [${start}…${end}] successfully`;
+}
+
+
+
+
 document.getElementById("generate").addEventListener("click", generateArray);
 document.getElementById("reset").addEventListener("click", generateArray);
 document.getElementById("sort").addEventListener("click", () => {
   const algorithm = document.getElementById("algorithm").value;
-  if (algorithm == "Bubble Sort") {
+  if (algorithm == "bubble") {
     bubbleSort();
   } 
-  else if (algorithm == "Insertion Sort") {
+  else if (algorithm == "insertion") {
     insertionSort();
   }
-  else if (algorithm == "Selection Sort") {
+  else if (algorithm == "selection") {
     selectionSort();
+  }
+  else if(algorithm == "merge"){
+    mergeSort(0,arr.length-1);
   }
 });
 // Generate initial array
