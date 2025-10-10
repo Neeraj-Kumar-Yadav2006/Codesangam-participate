@@ -2,10 +2,13 @@ const barsContainer = document.getElementById("bars");
 const explanation = document.getElementById("explanation");
 const sizeSlider = document.getElementById("size");
 const speedSlider = document.getElementById("speed");
+const array = document.getElementById("inputArray");
 
 let arr = [];
-
 function generateArray() {
+  barsContainer.innerHTML = "";
+  const input = document.getElementById("inputArray").value.trim();
+  if(input===""){
   arr = [];
   barsContainer.innerHTML = "";
   for (let i = 0; i < sizeSlider.value; i++) {
@@ -20,6 +23,20 @@ function generateArray() {
     bar.appendChild(label);
     barsContainer.appendChild(bar);
   }
+  }else{
+  arr = input.split(",").map(num => Number(num.trim())).filter(num => !isNaN(num));;
+  arr.forEach((ele)=>{
+    const bar = document.createElement("div");
+    bar.classList.add("bar");
+    bar.style.height = `${ele * 2}px`;
+    const label = document.createElement("span");
+    label.classList.add("bar-value");
+    label.innerText = ele;
+    bar.appendChild(label);
+    barsContainer.appendChild(bar);
+  })
+}
+  
 }
 
 function sleep(ms) {
@@ -172,6 +189,7 @@ async function quickSort(start, end) {
   let pivotIndex = await partition(start, end, bars);
   await quickSort(start, pivotIndex - 1);
   await quickSort(pivotIndex + 1, end);
+  explanation.innerText = "Array sorted successfully";
 }
 
 async function partition(start, end, bars) {
