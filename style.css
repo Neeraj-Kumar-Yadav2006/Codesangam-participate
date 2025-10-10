@@ -79,7 +79,9 @@ button:hover,
 
 .bar-value {
   position: absolute;
-  bottom: 6px;
+  top: -22px;
+  color: #00ffff;
+  text-shadow: 0 0 6px #00ffff;
   font-size: 13px;
   font-weight: 700;
   color: #ffffff;
