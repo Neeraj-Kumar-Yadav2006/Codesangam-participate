@@ -7,6 +7,14 @@ body {
   overflow-x: hidden;
 }
 
+
+.header{
+  display: flex;
+  flex-direction: flex;
+  justify-content: space-between;
+  
+}
+
 .panel {
   height: 70px;
   background: rgba(20, 20, 30, 0.9);
@@ -147,4 +155,22 @@ button:hover,
 
 .bar.active {
   animation: glow 0.6s infinite alternate;
+}
+.input{
+  display: inline-block;
+  
+  padding: 4px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(255,0,137,0.08), rgba(0,210,255,0.06));
+}
+.input-cont{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(0,0,0,0.35);
+  color: #e6eef8;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.06), 0 6px 24px rgba(0,0,0,0.6);
+  transition: box-shadow .15s, border-color .15s;
 }
