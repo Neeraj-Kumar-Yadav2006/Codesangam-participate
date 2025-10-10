@@ -79,11 +79,12 @@ button:hover,
 
 .bar-value {
   position: absolute;
-  bottom: -25px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff;
+  bottom: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  user-select: none;
 }
 
 .explanation {
