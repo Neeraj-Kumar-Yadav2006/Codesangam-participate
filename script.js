@@ -222,10 +222,6 @@ async function partition(start, end, bars) {
 
   return i + 1;
 }
-
-
-
-
 document.getElementById("generate").addEventListener("click", generateArray);
 document.getElementById("reset").addEventListener("click", generateArray);
 document.getElementById("sort").addEventListener("click", () => {
@@ -239,11 +235,11 @@ document.getElementById("sort").addEventListener("click", () => {
   else if (algorithm == "selection") {
     selectionSort();
   }
-  else if(algorithm == "merge"){
+  else if (algorithm == "merge") {
   mergeSort(0, arr.length - 1);
   }
-  else if(algorithm == "Quick Sort" || algorithm == "quick"){
-    quickSort(0, arr.length - 1);
+  else if (algorithm == "quick") {
+  quickSort(0, arr.length - 1);
   }
 });
 generateArray();
