@@ -1,5 +1,4 @@
 .hero-section {
-  /* background-image:url("pyramid.png"); */
   object-fit: fill;
   height: 30px;
   width: 1500px;
@@ -14,7 +13,6 @@ body {
 }
 
 .hero-message {
-  /* text-align: end;*/
   background-color: black;
   color: white;
   height: 40px;
@@ -79,7 +77,26 @@ body {
   border-radius: 4px;
   transition: all 0.2s ease;
 }
+.bar {
+  position: relative;
+  width: 30px;
+  background: turquoise;
+  margin: 2px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
 
+.bar-value {
+  position: absolute;
+  bottom: -20px;
+  font-size: 12px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
 .explanation {
   background: #f1f3f5;
   color: black;
