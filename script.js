@@ -236,10 +236,9 @@ document.getElementById("sort").addEventListener("click", () => {
     selectionSort();
   }
   else if (algorithm == "merge") {
-  mergeSort(0, arr.length - 1);
+    mergeSort(0, arr.length - 1);
   }
   else if (algorithm == "quick") {
-  quickSort(0, arr.length - 1);
+    quickSort(0, arr.length - 1);
   }
 });
-generateArray();
