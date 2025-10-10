@@ -116,7 +116,6 @@ async function selectionSort() {
   explanation.innerText = "Array sorted successfully!";
 }
 
-// Merge sort 
 
 async function mergeSort(start, end) {
   const bars = document.querySelectorAll(".bar");
@@ -131,7 +130,6 @@ async function mergeSort(start, end) {
 }
 
 async function merge(start, mid, end, bars) {
-  // we have taken two array
   let left = arr.slice(start, mid + 1);
   let right = arr.slice(mid + 1, end + 1);
   let i = 0, j = 0, k = start;
@@ -178,6 +176,52 @@ async function merge(start, mid, end, bars) {
 
   explanation.innerText = `Merged subarray [${start}…${end}] successfully`;
 }
+async function quickSort(start, end) {
+  const bars = document.querySelectorAll(".bar");
+  if (start >= end) return;
+
+  let pivotIndex = await partition(start, end, bars);
+  await quickSort(start, pivotIndex - 1);
+  await quickSort(pivotIndex + 1, end);
+}
+
+async function partition(start, end, bars) {
+  let pivot = arr[end];
+  bars[end].style.background = "red";
+  explanation.innerText = `Pivot chosen: ${pivot}`;
+  await sleep(1000 - speedSlider.value);
+
+  let i = start - 1;
+
+  for (let j = start; j < end; j++) {
+    bars[j].style.background = "orange";
+    explanation.innerText = `Comparing ${arr[j]} with pivot ${pivot}`;
+    await sleep(1000 - speedSlider.value);
+
+    if (arr[j] < pivot) {
+      i++;
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+      bars[i].style.height = `${arr[i] * 2}px`;
+      bars[j].style.height = `${arr[j] * 2}px`;
+      bars[i].style.background = "yellow";
+      explanation.innerText = `Swapped ${arr[i]} and ${arr[j]}`;
+      await sleep(1000 - speedSlider.value);
+    }
+    bars[j].style.background = "turquoise";
+  }
+
+  [arr[i + 1], arr[end]] = [arr[end], arr[i + 1]];
+  bars[i + 1].style.height = `${arr[i + 1] * 2}px`;
+  bars[end].style.height = `${arr[end] * 2}px`;
+
+  bars[i + 1].style.background = "green";
+  bars[end].style.background = "turquoise";
+
+  explanation.innerText = `Placed pivot ${pivot} at correct position`;
+  await sleep(1000 - speedSlider.value);
+
+  return i + 1;
+}
 
 
 
@@ -196,8 +240,10 @@ document.getElementById("sort").addEventListener("click", () => {
     selectionSort();
   }
   else if(algorithm == "merge"){
-    mergeSort(0,arr.length-1);
+  mergeSort(0, arr.length - 1);
+  }
+  else if(algorithm == "Quick Sort" || algorithm == "quick"){
+    quickSort(0, arr.length - 1);
   }
 });
-// Generate initial array
 generateArray();
