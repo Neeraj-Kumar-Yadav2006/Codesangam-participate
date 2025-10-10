@@ -14,6 +14,11 @@ function generateArray() {
     const bar = document.createElement("div");
     bar.classList.add("bar");
     bar.style.height = `${val * 2}px`;
+    const label = document.createElement("span");
+    label.classList.add("bar-value");
+    label.innerText = val;
+    
+    bar.appendChild(label);
     barsContainer.appendChild(bar);
   }
 }
