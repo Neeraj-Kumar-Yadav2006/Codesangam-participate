@@ -79,13 +79,14 @@ button:hover,
 
 .bar-value {
   position: absolute;
-  top: -22px;
-  color: #00ffff;
-  text-shadow: 0 0 6px #00ffff;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 13px;
   font-weight: 700;
-  color: #ffffff;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+  color: #00ffff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+  transition: all 0.2s ease;
   user-select: none;
 }
 
