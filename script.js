@@ -185,13 +185,25 @@ async function merge(start, mid, end, bars) {
 
 async function quickSort(start, end) {
   const bars = document.querySelectorAll(".bar");
-  if (start >= end) return;
+  if (start >= end) {
+    if (start >= 0 && end >= 0 && start < bars.length && end < bars.length) {
+      bars[start].style.background = "green";
+    }
+    return;
+  }
+
   let pivotIndex = await partition(start, end, bars);
+  bars[pivotIndex].style.background = "green";
+
   await quickSort(start, pivotIndex - 1);
   await quickSort(pivotIndex + 1, end);
-  explanation.innerText = "Array sorted successfully";
+  if (start === 0 && end === arr.length - 1) {
+    for (let i = 0; i < bars.length; i++) {
+      bars[i].style.background = "green";
+    }
+    explanation.innerText = "Array sorted successfully!";
+  }
 }
-
 async function partition(start, end, bars) {
   let pivot = arr[end];
   bars[end].style.background = "red";
